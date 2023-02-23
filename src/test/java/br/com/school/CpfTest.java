@@ -1,4 +1,6 @@
-import br.com.Cpf;
+package br.com.school;
+
+import br.com.school.student.Cpf;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,4 +1,6 @@
-import br.com.Telephone;
+package br.com.school;
+
+import br.com.school.student.Telephone;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

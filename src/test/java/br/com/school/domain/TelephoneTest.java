@@ -1,9 +1,8 @@
-package br.com.school;
+package br.com.school.domain;
 
-import br.com.school.student.Telephone;
+import br.com.school.domain.student.Telephone;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TelephoneTest {

@@ -1,6 +1,6 @@
-package br.com.school;
+package br.com.school.domain;
 
-import br.com.school.student.Cpf;
+import br.com.school.domain.student.Cpf;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

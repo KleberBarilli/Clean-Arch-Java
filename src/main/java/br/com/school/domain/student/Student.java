@@ -24,12 +24,12 @@ public class Student {
         return name;
     }
 
-    public Email getEmail() {
-        return email;
+    public String getEmail() {
+        return this.email.getAddress();
     }
 
-    public Cpf getCpf() {
-        return cpf;
+    public String getCpf() {
+        return this.cpf.getCpf();
     }
 
     public List<Telephone> getTelephones() {

@@ -1,12 +1,10 @@
 package br.com.school.infra.student;
 
-import br.com.school.domain.student.Cpf;
-import br.com.school.domain.student.Student;
-import br.com.school.domain.student.StudentRepository;
-import br.com.school.domain.student.Telephone;
+import br.com.school.domain.student.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -44,7 +42,38 @@ public class StudentRepositoryJDBC implements StudentRepository {
 
     @Override
     public Student findByCpf(Cpf cpf) {
-        return null;
+        try {
+            String sql = "SELECT id, name, email FROM STUDENT WHERE cpf = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, cpf.getCpf());
+
+
+            ResultSet rs = ps.executeQuery();
+            boolean isStudent = rs.next();
+
+            if (!isStudent) {
+                throw new StudentNotFound(cpf);
+            }
+
+            String name = rs.getString("name");
+            Email email = new Email(rs.getString("email"));
+
+            Student student = new Student(name, email, cpf);
+
+            Long id = rs.getLong("id");
+            sql = "SELECT ddd, number FROM TELEPHONE WHERE student_id = ?";
+            ps = connection.prepareStatement(sql);
+            ps.setLong(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String number = rs.getString("number");
+                String ddd = rs.getString("ddd");
+                student.addTelephone(ddd, number);
+            }
+            return student;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

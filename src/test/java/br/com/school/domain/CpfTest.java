@@ -12,7 +12,7 @@ public class CpfTest {
     void shouldNotBeAbleToCreateAnInvalidCpf() {
 
         assertThrows(IllegalArgumentException.class, () -> new Cpf(null));
-        assertThrows(IllegalArgumentException.class, () -> new Cpf("1545454556"));
+        assertThrows(IllegalArgumentException.class, () -> new Cpf("1545454559"));
 
     }
 
